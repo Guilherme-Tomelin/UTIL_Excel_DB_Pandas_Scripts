@@ -35,7 +35,10 @@ class ExcelToDB:
 if __name__ == "__main__":
     app = ExcelToDB()
 
-    excel_path = os.path.join(os.getcwd(), "excel_na_pasta_raiz.xlsx")
+    input_dir = os.path.join(os.getcwd(), "input")
+    excel_filename = "excel_para_inserir.xlsx" 
+    excel_path = os.path.join(input_dir, excel_filename)
+
     schema = "nome_schema"
     table = "nome_tabela"
 

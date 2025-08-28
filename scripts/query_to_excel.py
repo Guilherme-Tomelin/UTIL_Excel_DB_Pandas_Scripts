@@ -31,12 +31,14 @@ if __name__ == "__main__":
     app = QueryToExcel()
     
     query = """
-        SELECT * 
-        FROM minha_tabela
-        WHERE alguma_coisa;
+    SELECT *
+    FROM alguma coisa;
         """
     
+    output_dir = os.path.join(os.getcwd(), "output")
+    os.makedirs(output_dir, exist_ok=True)  
+
     data_atual = datetime.now().strftime("%d_%m_%y_%Hh%Mm%Ss")
-    output_file = os.path.join(os.getcwd(), f"registros com erros_{data_atual}.xlsx")
+    output_file = os.path.join(output_dir, f"registros_com_erros_{data_atual}.xlsx")
     
     app.execute_query_and_export(query, output_file)
