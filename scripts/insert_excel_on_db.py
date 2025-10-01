@@ -36,10 +36,10 @@ if __name__ == "__main__":
     app = ExcelToDB()
 
     input_dir = os.path.join(os.getcwd(), "input")
-    excel_filename = "excel_para_inserir.xlsx" 
+    excel_filename = "Pasta1.xlsx" 
     excel_path = os.path.join(input_dir, excel_filename)
 
-    schema = "nome_schema"
-    table = "nome_tabela"
+    schema = "protocolos"
+    table = "regra_protocolo"
 
     app.insert_excel(excel_path, schema, table)
