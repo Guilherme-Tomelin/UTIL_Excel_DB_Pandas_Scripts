@@ -31,14 +31,23 @@ if __name__ == "__main__":
     app = QueryToExcel()
     
     query = """
-    SELECT *
-    FROM protocolos.regra_protocolo;
+            SELECT 
+        tarefa_id, 
+        localizador, 
+        referencia, 
+        status, 
+        status_detalhado, 
+        inserted_at, 
+        andamento_processual
+    FROM atualizacao_referencia_gcpj.tasks_queue
+    WHERE referencia = 'CI-PLAN ECON-JUNTADA PROPOSTA'
+    AND status NOT IN ('sucesso', 'canceled');
         """
     
     output_dir = os.path.join(os.getcwd(), "output")
-    os.makedirs(output_dir, exist_ok=True)  
+    os.makedirs(output_dir, exist_ok=True)
 
     data_atual = datetime.now().strftime("%d_%m_%y_%Hh%Mm%Ss")
-    output_file = os.path.join(output_dir, f"registros_com_erros_{data_atual}.xlsx")
+    output_file = os.path.join(output_dir, f"output_{data_atual}.xlsx")
     
     app.execute_query_and_export(query, output_file)
